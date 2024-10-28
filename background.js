@@ -1,14 +1,17 @@
-chrome.runtime.onMessage.addListener((message) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	if (message.action === 'searchCompany') {
-		const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(
-			message.company + ' Shark Tank update'
-		)}`;
+		chrome.storage.sync.get('enabled', function (data) {
+			if (data.enabled !== undefined && data.enabled) {
+				const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(
+					message.company + ' Shark Tank company update'
+				)}`;
 
-		chrome.windows.create({
-			url: searchUrl,
-			type: 'normal',
-			width: 800,
-			height: 600,
+				// Create a new tab with the search URL and do not switch to it
+				chrome.tabs.create({
+					url: searchUrl,
+					active: false, // Set this to false to not switch to the new tab
+				});
+			}
 		});
 	}
 });
