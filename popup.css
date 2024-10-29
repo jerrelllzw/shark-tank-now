@@ -5,11 +5,11 @@ button {
 	cursor: pointer;
 	line-height: 1.2rem;
 	font-weight: 900;
-	background: #007bff;
+	background: black;
 	padding: 8px 14px 9px;
 	font-size: 15px;
 	border-radius: 4px;
-	color: #fff;
+	color: #ffff00;
 	height: 36px;
 	transition: all 75ms ease-in-out;
 }
