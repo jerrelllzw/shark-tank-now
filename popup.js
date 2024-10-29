@@ -6,7 +6,7 @@ async function extractCompanyName(title) {
 	const requestBody = {
 		contents: [
 			{
-				parts: [{ text: `Return only the company name from ${title}` }],
+				parts: [{ text: `Return only the company name and nothing else from "${title}"` }],
 			},
 		],
 	};
