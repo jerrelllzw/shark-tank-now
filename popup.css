@@ -1,3 +1,7 @@
+body {
+	background-color: #365c77;
+}
+
 button {
 	display: inline-block;
 	outline: 0;
@@ -5,7 +9,7 @@ button {
 	cursor: pointer;
 	line-height: 1.2rem;
 	font-weight: 900;
-	background: black;
+	background: #3badca;
 	padding: 8px 14px 9px;
 	font-size: 15px;
 	border-radius: 4px;
