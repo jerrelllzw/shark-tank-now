@@ -1,10 +1,10 @@
-function triggerSearch() {
-	const title = document.querySelector('title').innerText;
-	chrome.runtime.sendMessage({ action: 'searchCompany', company: title });
-}
-
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-	if (message.action === 'searchCompany') {
-		triggerSearch();
+	if (message.action === 'getVideoTitle') {
+		const titleElement = document.querySelector('title');
+		if (titleElement) {
+			sendResponse({ title: titleElement.innerText });
+		} else {
+			sendResponse({ title: null });
+		}
 	}
 });
