@@ -9,6 +9,7 @@ Ever wonder how a company is doing while watching Shark Tank on YouTube? Click t
 ## Running Locally
 
 To install and use this extension:
+
 1. Clone this repo
 2. Replace `GEMINI_API_KEY` in `popup.js` with your personal Gemini API key
 3. Go to chrome://extensions/

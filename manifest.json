@@ -2,6 +2,7 @@
 	"manifest_version": 3,
 	"name": "Shark Tank Now",
 	"version": "1.0",
+	"description": "Searches for company updates in a new tab.",
 	"permissions": ["activeTab", "scripting"],
 	"action": {
 		"default_icon": {
