@@ -1,29 +1,23 @@
 chrome.action.onClicked.addListener((tab) => {
-	chrome.tabs.sendMessage(
-		tab.id,
-		{ action: 'getVideoDescription' },
-		async (response) => {
-			if (response && response.description) {
-				const companyName = await extractCompanyName(response.description);
-				if (companyName) {
-					console.log('Extracted Company Name:', companyName);
-					chrome.tabs.create({
-						url: `https://www.google.com/search?q=${encodeURIComponent(
-							companyName.trim() + ' shark tank update'
-						)}`,
-						active: false,
-					});
-				} else {
-					console.log('Could not extract company name.');
-				}
+	chrome.tabs.sendMessage(tab.id, { action: 'getVideoDescription' }, async (response) => {
+		if (response && response.description) {
+			const companyName = await extractCompanyName(response.description);
+			if (companyName) {
+				console.log('Extracted Company Name:', companyName);
+				chrome.tabs.create({
+					url: `https://www.google.com/search?q=${encodeURIComponent(companyName.trim() + ' shark tank update')}`,
+					active: false,
+				});
+			} else {
+				console.log('Could not extract company name.');
 			}
 		}
-	);
+	});
 });
 
 async function extractCompanyName(description) {
 	const GEMINI_API_URL =
-		'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+		'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent';
 	const GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY'; // Replace with your actual API key
 
 	const requestBody = {
